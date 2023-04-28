@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0-alpha2/dist/css/bootstrap.css}">
+</head>
+<style>
+  h4 {
+    color: snow;
+  }
+</style>
+<body style="background-color: #35363a">
+
+<h4 th:text="|Кількість кроків: ${tabulating.countStep()}|"></h4>
+<h4 th:text="|Максимальне значення: y=${tabulating.getMax(points).y()}, x=${tabulating.getMax(points).x()}|"></h4>
+<h4 th:text="|Мінімальне значення: y=${tabulating.getMin(points).y()}, x=${tabulating.getMin(points).x()}|"></h4>
+<h4 th:text="|Сума: ${tabulating.getSum(points)}|"></h4>
+<h4 th:text="|Середнє арифметичне: ${tabulating.getAverage(points)}|"></h4>
+
+<div  style="width: 300px; ">
+<table class="table table-bordered table-gray">
+  <thead class="tab-pane table-white">
+  <tr>
+    <th style="width: 150px;color: snow;">X</th>
+    <th style="color: snow;">Y</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="point : ${points}">
+    <td th:text="|${point.x}|" style="width: 150px;color: snow;"></td>
+    <td th:text="${point.y}" style="color: snow;"></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<script th:src="@{/webjars/jquery/3.6.4/dist/jquery.js}"></script>
+<script th:src="@{/webjars/popperjs__core/2.11.7/dist/umd/popper.js}"></script>
+<script th:src="@{/webjars/bootstrap/5.3.0-alpha2/dist/js/bootstrap.bundle.js}"></script>
+</body>
+</html>
